@@ -601,5 +601,19 @@
   "call_number": "Call Number",
   "more_information": "More Info",
   "manage_language": "Preferred Language",
-  "manage_appearance": "Appearance"
+  "manage_appearance": "Appearance",
+  "campaigns": "Campaigns",
+  "active_campaigns": "Active Campaigns",
+  "enrolled_campaigns": "Your Campaigns",
+  "past_campaigns": "Past Campaigns",
+  "upcoming_campaigns": "Upcoming Campaigns",
+  "past_enrolled_campaigns": "Your Past Campaigns",
+  "linked_user_campaigns": "Linked User Campaigns",
+  "enroll": "Enroll",
+  "unenroll": "Unenroll",
+  "opt_in_to_campaign_emails": "Opt in to Emails",
+  "opt_out_of_campaign_emails": "Opt out of Emails",
+  "milestone_progress": "Progress",
+  "milestone_reward": "Reward"
+
 }

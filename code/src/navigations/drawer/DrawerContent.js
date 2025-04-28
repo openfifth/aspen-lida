@@ -11,14 +11,14 @@ import * as SecureStore from 'expo-secure-store';
 import _ from 'lodash';
 import { Badge, Box, Button, Container, Divider, HStack, Icon, Image, Pressable, Text, useColorModeValue, useToken, VStack } from 'native-base';
 import React from 'react';
-import { AuthContext } from '../../components/navigation';
+import navigation, { AuthContext } from '../../components/navigation';
 import { AppState, Platform } from 'react-native';
 import { AppStateStatus } from "react-native";
 
 // custom components and helper files
 import { showILSMessage } from '../../components/Notifications';
 import { BrowseCategoryContext, CheckoutsContext, HoldsContext, LanguageContext, LibraryBranchContext, LibrarySystemContext, SystemMessagesContext, UserContext } from '../../context/initialContext';
-import { navigateStack } from '../../helpers/RootNavigator';
+import { navigateAndSimpleReset, navigateStack } from '../../helpers/RootNavigator';
 import { CatalogOffline } from '../../screens/Auth/CatalogOffline';
 import { InvalidCredentials } from '../../screens/Auth/InvalidCredentials';
 import { UseColorMode } from '../../themes/theme';
@@ -385,6 +385,7 @@ export const DrawerContent = () => {
                               <Fines />
                               <NotificationHistory />
                               <Events />
+                              <Campaigns />
                          </VStack>
 
                          <VStack space="3">
@@ -954,6 +955,34 @@ const YearInReview = () => {
 
 	return null;
 };
+
+const Campaigns = () => {
+     const { user } = React.useContext(UserContext);
+	const { library } = React.useContext(LibrarySystemContext);
+	const { language } = React.useContext(LanguageContext);
+
+     return(
+          <Pressable     
+               px="2"
+               py="3"
+               rounded="md"
+               onPress={() => 
+                    navigateStack('AccountScreenTab', 'MyCampaigns', {
+                         libraryUrl: library.baseUrl,
+                         hasPendingChanges: false,
+                    })
+               }>
+               <HStack space="1" alignItems="center">
+                    <Icon as={MaterialIcons} name="chevron-right" size="7"/>
+                    <VStack w="100%">
+                         <Text fontWeight="500">
+                              {getTermFromDictionary(language, 'campaigns')} {user ? <Text bold>({user.numCampaigns ?? 0})</Text> : null}
+                         </Text>
+                    </VStack>
+               </HStack>
+          </Pressable>
+     );
+}
 
 async function getStoredNotifications() {
      try {

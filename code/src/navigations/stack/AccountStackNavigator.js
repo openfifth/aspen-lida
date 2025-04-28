@@ -30,6 +30,7 @@ import { MyHolds } from '../../screens/MyAccount/TitlesOnHold/MyHolds';
 import { BackIcon } from '../../themes/theme';
 import { getTermFromDictionary } from '../../translations/TranslationService';
 import { EditionsModal } from './BrowseStackNavigator';
+import { MyCampaigns } from '../../screens/MyAccount/Campaigns/Campaigns';
 
 import TitleWithLogo from '../../components/TitleWithLogo'
 
@@ -305,6 +306,16 @@ const AccountStackNavigator = () => {
                          })}
                     />
                </Stack.Group>
+               <Stack.Screen
+                    name="MyCampaigns"
+                    component={MyCampaigns}
+                    options={{
+                         header: () => {
+                              const title = getTermFromDictionary(language, 'campaigns');
+                              return <TitleWithLogo title={title} hideBack={true} />;
+                         },
+                    }}
+               />
                <Stack.Screen
                     name="MyNotificationHistory"
                     component={MyNotificationHistory}

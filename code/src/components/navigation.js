@@ -288,6 +288,7 @@ export function App() {
                                                                                                                                   MyPreferences: 'user/preferences',
                                                                                                                                   MyProfile: 'user',
                                                                                                                                   MyReadingHistory: 'user/reading_history',
+                                                                                                                                  MyCampaigns: 'user/campaigns',
                                                                                                                              },
                                                                                                                         },
                                                                                                                         LibraryCardTab: {
